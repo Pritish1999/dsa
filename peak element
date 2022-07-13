@@ -1,0 +1,30 @@
+class Solution
+{
+	// Function to find the peak element
+	// arr[]: input array
+	// n: size of array a[]
+	public int peakElement(int[] arr,int n)
+    {
+       //add code here.
+       int d=0;
+       if(n==1)
+        d=0;
+       else
+       {
+       if(arr[0]>arr[1])
+       d= 0;
+       else if(arr[n-1]>arr[n-2])
+       d= n-1;
+       else
+       {
+       for(int i=1;i<n-1;i++)
+       {
+           if(arr[i]> arr[i-1] && arr[i]> arr[i+1])
+           d= i;
+       }
+       }
+       }
+       
+       return d;
+    }
+}
