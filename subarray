@@ -1,0 +1,37 @@
+class Solution
+{
+    //Function to find a continuous sub-array which adds up to a given number.
+    static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
+    {
+        // Your code here
+        ArrayList<Integer> a=new ArrayList<Integer>();
+        int currsum=0, f=0,k=0;
+        for(int i=k;i<n;i++)
+        {
+            currsum+=arr[i];
+           // System.out.print(currsum+" ");
+            if(currsum==s)
+            {
+                a.add(k+1);
+                a.add(i+1);
+                f=1;
+                break;
+            }
+            if(currsum>s)
+            {
+                i=k;
+               // System.out.println(i);
+               k++;
+                currsum=0;
+            }
+        }
+        if(f==1)
+        return a;
+        else
+        {
+            a.add(-1);
+            return a;
+        }
+        
+    }
+}
