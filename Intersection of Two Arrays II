@@ -1,0 +1,49 @@
+## Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+ 
+
+Example 1:
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+Example 2:
+
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [4,9]
+Explanation: [9,4] is also accepted.
+
+sol:
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        ArrayList<Integer> arr=new ArrayList<Integer>();
+        ArrayList<Integer> resArr=new ArrayList<Integer>();
+        int minLenArr[];
+        int maxLenArr[];
+        if(nums1.length>nums2.length){
+             minLenArr=nums2;
+             maxLenArr=nums1;
+        }
+        else{
+             minLenArr=nums1;
+             maxLenArr=nums2;
+        }
+        for(int num: maxLenArr){
+            arr.add(num);
+        }
+
+        for(int num=0;num<minLenArr.length;num++){
+            if(arr.contains(minLenArr[num])){
+                resArr.add(minLenArr[num]);
+                int index=arr.indexOf(minLenArr[num]);
+                arr.set(index,-1); 
+            }
+        }
+        System.out.println(arr);
+        int res[]=new int[resArr.size()];
+        int i=0;
+        for(int num: resArr){
+            res[i++]=num;
+        }
+        return res;
+    }
+}
