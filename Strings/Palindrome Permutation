@@ -1,0 +1,18 @@
+## Palindrome Permutation
+
+public class PalindromePermutation {
+    public static boolean canPermutePalindrome(String s) {
+        int[] freq = new int[128];
+        for (char c : s.toCharArray()) freq[c]++;
+        int oddCount = 0;
+        for (int count : freq) {
+            if (count % 2 != 0) oddCount++;
+        }
+        return oddCount <= 1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(canPermutePalindrome("tactcoa")); // true
+        System.out.println(canPermutePalindrome("abc")); // false
+    }
+}
