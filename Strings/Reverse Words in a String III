@@ -1,0 +1,13 @@
+## Reverse Words in a String III
+class Solution {
+    public String reverseWords(String s) {
+        String words[]=s.split(" ");
+        for(int i=0;i<words.length;i++){
+            words[i]=new StringBuilder(words[i]).reverse().toString();
+        }
+        return String.join(" ",words);
+    }
+}
+
+most optimized approach above 
+Other approaches are using normal for loop or by converting to charArray and using stack(lot of space and it takes a lot of time)
