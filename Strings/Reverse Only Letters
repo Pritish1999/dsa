@@ -1,0 +1,32 @@
+## Reverse Only Letters
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        char charArr[]=s.toCharArray();
+        int start=0;
+        int end=charArr.length-1;
+        while(start<end){
+            char st=charArr[start];
+            char e=charArr[end];
+            if(((st>=33 && st<=64) || (st>=91 && st<=96)) && ((e>=33 && e<=64) || (e>=91 && e<=96))){
+                start++;
+                end--;
+                continue;
+            }
+             if((st>=33 && st<=64) || (st>=91 && st<=96)){
+                start++;
+                continue;
+            }
+            if((e>=33 && e<=64) || (e>=91 && e<=96)){
+                end--;
+                continue;
+            }
+            char c=charArr[start];
+            charArr[start]=charArr[end];
+            charArr[end]=c;
+            start++;
+            end--;
+        }
+        return String.valueOf(charArr);
+            
+    }
+}
