@@ -1,0 +1,25 @@
+## Binary GCD Problem (Stein's Algorithm)
+
+class Solution {
+    public int binaryGCD(int a, int b) {
+        if (a == 0) return b;
+        if (b == 0) return a;
+        if ((a & 1) == 0 && (b & 1) == 0) {
+            return binaryGCD(a >> 1, b >> 1) << 1;
+        } else if ((a & 1) == 0) {
+            return binaryGCD(a >> 1, b);
+        } else if ((b & 1) == 0) {
+            return binaryGCD(a, b >> 1);
+        } else {
+            return binaryGCD(Math.abs(a - b), Math.min(a, b));
+        }
+    }
+}
+
+
+approach:
+even,even  ---> gcd(a/2,b/2)*2
+even,odd   ---> gcd(a/2,b)
+odd,even   ---> gcd(a,b/2)
+odd,odd    ---> gcd(Math.abs(a-b)/Math.min(a,b))
+use &1==0 to find even or not and << for *2 and >> for /2
