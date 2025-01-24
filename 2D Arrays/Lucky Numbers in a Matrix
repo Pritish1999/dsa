@@ -1,0 +1,37 @@
+## Lucky Numbers in a Matrix
+class Solution {
+    public List<Integer> luckyNumbers(int[][] matrix) {
+        ArrayList<Integer> arr=new ArrayList<>();
+        
+        int rows=matrix.length;
+        int cols=matrix[0].length;
+        int minRow[]=new int[rows];
+        int maxCol[]=new int[cols];
+
+        for(int i=0;i<rows;i++){
+            int min=Integer.MAX_VALUE;
+            for(int j=0;j<cols;j++){
+                min=Math.min(min,matrix[i][j]);
+            }
+            minRow[i]=min;
+        }
+
+        for(int i=0;i<cols;i++){
+            int max=Integer.MIN_VALUE;
+            for(int j=0;j<rows;j++){
+                max=Math.max(max,matrix[j][i]);
+            }
+            maxCol[i]=max;
+        }
+
+         for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+               if(matrix[i][j]==minRow[i] && matrix[i][j]==maxCol[j])
+                arr.add(matrix[i][j]);
+            }
+        }
+
+        return arr;
+        
+    }
+}
