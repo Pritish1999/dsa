@@ -1,0 +1,30 @@
+## 73. Set Matrix Zeroes
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        HashMap<Integer,Integer> rowVisited=new HashMap<>();
+        HashMap<Integer,Integer> colVisited=new HashMap<>();
+
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                    if(!rowVisited.containsKey(i)){
+                        rowVisited.put(i,i);
+                    }
+                    if(!colVisited.containsKey(j)){
+                        colVisited.put(j,j);
+                    }
+                }
+            }
+        }
+
+         for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(rowVisited.containsKey(i) || colVisited.containsKey(j)){
+                    matrix[i][j]=0;
+                }
+            }
+         }
+
+    }
+}
