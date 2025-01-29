@@ -1,0 +1,14 @@
+## 214. Minimum Bit Flips to Convert Number
+
+public class codefile{
+    static int solve(int start,int goal){
+		int ans=start^goal;
+        int cnt=0;
+        while(ans>0){
+            if((ans&1)==1)
+                cnt++;
+            ans=ans>>1;
+        }
+        return cnt;
+    }
+}
