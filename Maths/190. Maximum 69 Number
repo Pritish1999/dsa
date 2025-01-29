@@ -1,0 +1,28 @@
+## 190. Maximum 69 Number
+
+public class codefile{
+    static int solve(int n){
+        if(n==9 || n==6){
+            return 9;
+        }
+        int c=0;
+        while(n>0){
+            int d=n%10;
+            c=(c*10)+d;
+            n=n/10;
+        }
+        int ans=0;
+        boolean changed=false;
+        while(c>0){
+            int d=c%10;
+            if(d==6 && changed==false){
+                ans=(ans*10)+9;
+                changed=true;
+            }else{
+                ans=(ans*10)+d;
+            }
+            c=c/10;
+        }
+        return ans;
+    }
+}
