@@ -1,0 +1,27 @@
+## 724. Find Pivot Index
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int sum=0;
+        for(int i: nums){
+            sum+=i;
+        }
+        int curSum=0;
+        int currSum[]=new int[nums.length];
+        int index=0;
+        for(int i:nums){
+            curSum+=i;
+            currSum[index++]=curSum;
+        }
+
+        for(int i=0;i<nums.length;i++){
+            int rightSum=sum-currSum[i];
+            int leftSum=currSum[i]-nums[i];
+            if(leftSum==rightSum)
+                return i;
+        }
+        return -1;
+    }
+}
+
+
