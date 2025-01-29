@@ -1,0 +1,30 @@
+## 76. Difference Between Element Sum and Digit Sum of an Array
+
+public class codefile{
+    static int solve(int[]  input){
+        int elementSum=0;
+        int digitSum=0;
+        boolean hasMultipleDigits=false;
+        for(int i:input){
+            elementSum+=i;
+            if(i>9){
+                hasMultipleDigits=true;
+            }
+        }
+        if(hasMultipleDigits==false){
+            return 0;
+        }
+        for(int i:input){
+            if(i>9){
+                while(i>0){
+                    int d=i%10;
+                    digitSum+=d;
+                    i=i/10;
+                }
+            }else{
+                digitSum+=i;
+            }
+        }
+        return Math.abs(elementSum-digitSum);
+    }
+}
