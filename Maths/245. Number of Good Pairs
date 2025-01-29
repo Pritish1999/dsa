@@ -1,0 +1,17 @@
+## 245. Number of Good Pairs
+
+public class codefile{
+    static int count(int[]  input){
+        int arr[]=new int[101];
+        for(int i: input){
+            arr[i]++;
+        }
+        int sum=0;
+        for(int i:arr){
+            if(i!=0){
+                sum+=(i*(i-1))/2;
+            }
+        }
+        return sum;
+    }
+}
